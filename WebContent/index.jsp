@@ -60,5 +60,16 @@
  	   	  2) Create XML file from a DTD File - Next
  	   	  3) Select XML Catalog entry - 해당 entry 선택 - 생성
 	 -->
+	 <!-- jsp/servlet에서 request.getContextPath()를 작성하게 되면 ContextPath(프로젝트명)을 가져올 수 잇다. -->
+	 <!-- ContextPath명을 매번 쓰기 귀찮으니 c:set을 이용해서 application객체에 ContextPath경로를 contextPath라는 변수에 담아서 사용하자  -->
+	 <c:set var="ContextPath" value=${ pageContext.servletContext.contextpath }" scope="application"/>
+	 <%-- <a href="${contextPate }/WEB-INF/views/main/main.jsp>메인으로</a> --%>
+	 
+	 
+	 <!--  
+	 	WEB-INF 폴더는 WAS서버가 관리하는 폴더이기 때분에 views폴더가 WEB-INF안에 있는 경우
+	 	Web Server	
+	  -->
+	 <jsp:forward page="WEB-INF/views/main/main.jsp">
 </body>
 </html>
