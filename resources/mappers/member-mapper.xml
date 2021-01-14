@@ -4,9 +4,40 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberMapper">
 	
-	
+	<!-- 
+		id: 외부(Dao)에서 참조하기 위한 쿼리문의 고유 아이디
+		parameterType : 내부로 받을 객체(mybatis-config.xml에 설정된 alias로 이용가능)
+		
+		쿼리문 기본적으로 preparedStatement 이다.
+		?(위치홀더) 대신 직접 parameter로 전달받은 객체의 값을 꺼내어쓴다. #{필드명}으로 값을 꺼낸다.
+		
+		[주의 사항]
+		여러줄로 줄바꿈 문자를 섞어서 사용가능하다.
+		단, 문장 마침을 나타내는 세미콜론은 에러를 유발하니 쓰지말자.
+	 -->
 	<!-- insert 쿼리문을 작성 -->
 	<insert id="insertMember" parameterType="Member">
-	
+		INSERT 
+		  INTO MEMBER
+		VALUES ( 
+		         seq_mid.nextval
+		       , #{ userId }
+		       , #{ userPwd }
+		       , #{ userName }
+		       , #{ email }
+		       , #{ birthDay }
+		       , #{ gender }
+		       , #{ phone }
+		       , #{ address }
+		       , SYSDATE
+		       , SYSDATE
+		       , DEFAULT	      
+		       )
 	</insert>
 </mapper>
+
+
+
+
+
+
