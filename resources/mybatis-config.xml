@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML 문서의 유효성 체크를 위해서 필요한 부분 -->
+<!DOCTYPE configuration PUBLIC 
+ "-//mybatis.org//DTD Config 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<!-- 
+		* Configuration
+		    마이바티스 설정과 관련된 기본 셋팅들을 선언할 수 있는 영역
+		  configuration 내부에서 작성되는 element들도 순서가있다.
+	 -->
+	 
+	 <!-- driver.properties 적용 -->
+	 <properties resource="/driver.properties"/>
+	 
+	 <!-- 마이바티스 설정과 기본 셋팅 선언 -->
+	 <settings>
+	 	  <!-- 만약에 null로 데이터가 전달되었다면 빈칸이 아닌 null로 인식해라 라는 뜻 -->
+	 	  <!-- value에 null은 반드시 대문자로!  -->
+	      <setting name="jdbcTypeForNull" value="NULL"/>
+	 </settings>
+	 
+	 <!-- DB 연결할 설정에 대한 정보를 선언하는 부분 -->
+	 <!-- default : 연결설정을 여러개 생성하여 아이디로 구분하고 기본으로 연결할 설정 정보를 설정하는 속성 -->
+	 <environments default="development">
+	 	<environment id="development">
+	 		<transactionManager type="JDBC"/>
+	 		<dataSource type=""></dataSource>
+	 	</environment>
+	 </environments>
+	 
+	 
+</configuration>
+
+
+
+
+
+
+
