@@ -7,8 +7,8 @@ import com.ict.member.model.vo.Member;
 public class MemberDao {
 
 	public int insertMember(SqlSession session, Member mem) {
-
-		return 0;
+		int result = session.insert("memberMapper.insertMember", mem);
+		return result;
 	}
 
 }
