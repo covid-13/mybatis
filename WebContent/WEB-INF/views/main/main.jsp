@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>메인입니다.</h1>
+	<jsp:include page="../common/menubar.jsp"/>
 </body>
 
 </html>

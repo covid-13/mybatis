@@ -74,24 +74,6 @@
 	 --> 
 	<jsp:forward page="WEB-INF/views/main/main.jsp"/>
 	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
->>>>>>> branch 'master' of https://github.com/covid-13/mybatis.git
+
 </body>
 </html>
