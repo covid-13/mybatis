@@ -46,6 +46,13 @@ public class MemberInsertServlet extends HttpServlet {
 		MemberService mService = new MemberServiceImpl(); // 다형성
 		
 		int result = mService.insertMember(m);
+		
+		if(result > 0) { // 회원가입 성공 시
+			request.getSession().setAttribute("loginUser", m); // 변경 예정
+			response.sendRedirect(request.getContextPath());
+		}else {
+			//에러처리
+		}
 	}
 
 	/**
