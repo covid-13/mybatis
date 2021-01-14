@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ict.member.model.service.MemberService;
+import com.ict.member.model.service.MemberServiceImpl;
+import com.ict.member.model.vo.Member;
+
 /**
  * Servlet implementation class MemberInsertServlet
  */
@@ -35,6 +39,13 @@ public class MemberInsertServlet extends HttpServlet {
 		String gender = request.getParameter("gender");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
+		
+		// Service로 전송하기 위한 Member 객체 생성
+		Member m = new Member(userId,userPwd,userName,email,birthDay,gender,phone,address);
+		
+		MemberService mService = new MemberServiceImpl(); // 다형성
+		
+		int result = mService.insertMember(m);
 	}
 
 	/**
