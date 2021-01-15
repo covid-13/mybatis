@@ -16,6 +16,18 @@
 		margin-right:auto;
 	}
 </style>
+<script>
+	$(function(){
+		$("#upUser").on("click",function(){
+			$("#updateForm").attr("action","mUpdate.do");
+		});
+		
+		$("#deUser").on("click",function(){
+			$("#updateForm").attr("action","mDelete.do");
+		});
+	});
+
+</script>
 </head>
 <body>
 <jsp:include page="../common/menubar.jsp"/>
@@ -26,8 +38,7 @@
 	
 	<br>
 	
-	
-	<form action="mUpdate.do" method="post" id="updateForm">
+	<form method="post" id="updateForm">
 		  <div class="form-group row">
 		    <label for="userId" class="col-sm-3 col-form-label">* ID</label>
 		    <div class="col-sm-8">
@@ -114,8 +125,8 @@
 		  
 		  <div class="form-group row" align="center">
 		    <div class="col-sm-10">
-		        <button type="submit" class="btn btn-outline-secondary">회원정보수정</button>
-		        <button type="button" class="btn btn-outline-secondary">회원탈퇴</button>
+		    	<input type="submit" id="upUser" class="btn btn-outline-secondary" value="회원정보수정"> <!-- mUpdate.do -->
+		    	<input type="submit" id="deUser" class="btn btn-outline-secondary" value="회원탈퇴"> <!-- mdelete.do -->
 		    	<button type="reset" class="btn btn-outline-secondary">Reset</button>
 		    </div>
 		  </div>
