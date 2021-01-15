@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <style>
-	#joinForm{
+	#updateForm{
 		width:600px;
 		margin-left:auto;
 		margin-right:auto;
@@ -22,12 +22,12 @@
 	
 	<br>
 	
-	<h1 align="center">회원가입</h1>
+	<h1 align="center">회원정보 수정</h1>
 	
 	<br>
 	
 	
-	<form action="insert.me" method="post" id="joinForm">
+	<form action="mUpdate.do" method="post" id="updateForm">
 		  <div class="form-group row">
 		    <label for="userId" class="col-sm-3 col-form-label">* ID</label>
 		    <div class="col-sm-8">
@@ -114,7 +114,7 @@
 		  
 		  <div class="form-group row" align="center">
 		    <div class="col-sm-10">
-		        <button type="button" class="btn btn-outline-secondary">회원정보수정</button>
+		        <button type="submit" class="btn btn-outline-secondary">회원정보수정</button>
 		        <button type="button" class="btn btn-outline-secondary">회원탈퇴</button>
 		    	<button type="reset" class="btn btn-outline-secondary">Reset</button>
 		    </div>

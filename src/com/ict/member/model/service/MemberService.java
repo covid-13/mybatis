@@ -17,4 +17,12 @@ public interface MemberService {
 	
 	// 회원가입 처리용 서비스
 	int insertMember(Member mem);
+	
+	/**
+	 * 회원정보수정
+	 * @param mem(비밀번호, 이메일, 전화번호, 주소)
+	 * @return
+	 */
+	int updateMember(Member mem);
+	
 }

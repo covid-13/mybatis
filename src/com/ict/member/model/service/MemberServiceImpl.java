@@ -46,4 +46,20 @@ public class MemberServiceImpl implements MemberService {
 		return loginUser;
 	}
 
+	@Override
+	public int updateMember(Member mem) {
+		SqlSession session = getSqlSession();
+		
+		int result = mDao.updateMember(session,mem);
+		
+		if(result > 0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		
+		return result;
+	}
+
 }

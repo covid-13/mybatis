@@ -78,6 +78,18 @@
 		       , DEFAULT	      
 		       )
 	</insert>
+	
+	<update id="updateMember" parameterType="Member">
+		UPDATE 
+			   MEMBER
+		   SET 
+		       USER_PWD = #{ userPwd }
+		     , EMAIL = #{ email }
+		     , PHONE = #{ phone }
+		     , ADDRESS = #{ address }
+	     WHERE 
+	           USER_ID = #{ userId }
+	</update>
 </mapper>
 
 

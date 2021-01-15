@@ -16,4 +16,10 @@ public class MemberDao {
 		return loginUser;
 	}
 
+	public int updateMember(SqlSession session, Member mem) {
+		int result = session.update("memberMapper.updateMember", mem);
+		return result;
+	}
+
+	
 }
