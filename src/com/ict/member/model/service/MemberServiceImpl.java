@@ -62,4 +62,21 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public int deleteMember(Member mem) {
+		SqlSession session = getSqlSession();
+		
+		int result = mDao.deleteMember(session,mem);
+		
+		if(result > 0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 }
