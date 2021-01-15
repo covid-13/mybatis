@@ -7,21 +7,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ict.member.model.service.MemberService;
 import com.ict.member.model.service.MemberServiceImpl;
 import com.ict.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberInsertServlet
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/insert.me")
-public class MemberInsertServlet extends HttpServlet {
+@WebServlet("/login.me")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInsertServlet() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,30 +29,19 @@ public class MemberInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 파라미터로 넘어온 전달값을 변수에 저장
+		
 		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
-		String userName = request.getParameter("userName");
-		String email = request.getParameter("email");
-		String birthDay = request.getParameter("birthDay");
-		String gender = request.getParameter("gender");
-		String phone = request.getParameter("phone");
-		String address = request.getParameter("address");
+		String userPwd= request.getParameter("userPwd");
 		
-		// Service로 전송하기 위한 Member 객체 생성
-		Member m = new Member(userId,userPwd,userName,email,birthDay,gender,phone,address);
+		System.out.println("userId : " + userId + " : " + "userPwd : " + userPwd);
 		
-		MemberService mService = new MemberServiceImpl(); // 다형성
+		Member mem = new Member();
+		mem.setUserId(userId);
+		mem.setUserPwd(userPwd);
 		
-		int result = mService.insertMember(m);
+		Member loginUser = new MemberServiceImpl().selectMember(mem);
 		
-		if(result > 0) { // 회원가입 성공 시
-			request.getSession().setAttribute("loginUser", m); // 변경 예정
-			System.out.println(request.getContextPath());
-			response.sendRedirect(request.getContextPath());
-		}else {
-			//에러처리
-		}
+		System.out.println("loginUser : " + loginUser);
 	}
 
 	/**
