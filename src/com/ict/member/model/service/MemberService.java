@@ -25,4 +25,11 @@ public interface MemberService {
 	 */
 	int updateMember(Member mem);
 	
+	/**
+	 * 회원정보삭제
+	 * @param mem
+	 * @return
+	 */
+	int deleteMember(Member mem);
+	
 }

@@ -21,5 +21,10 @@ public class MemberDao {
 		return result;
 	}
 
+	public int deleteMember(SqlSession session, Member mem) {
+		int result = session.delete("memberMapper.deleteMember",mem);
+		return result;
+	}
+
 	
 }

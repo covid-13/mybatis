@@ -90,6 +90,12 @@
 	     WHERE 
 	           USER_ID = #{ userId }
 	</update>
+	
+	<delete id="deleteMember" parameterType="Member">
+		DELETE 
+		  FROM MEMBER
+		 WHERE USER_ID = #{ userId }
+	</delete>
 </mapper>
 
 
