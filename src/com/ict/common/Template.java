@@ -40,8 +40,6 @@ public class Template {
 		// commit(),rollback(),close() ...은 생성하지 않아도 된다.
 		// Statement, PreparedStatement관련, ResultSet
 		// Why? SqlSession클래스 이미 commit,rollback,close 함수를 제공해주고있다.
-		
-		
 	}
 }
 

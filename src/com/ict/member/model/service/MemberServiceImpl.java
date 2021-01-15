@@ -32,4 +32,18 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public Member selectMember(Member mem) {
+		
+		SqlSession session = getSqlSession();
+		
+		Member loginUser = mDao.selectMember(session, mem);
+		
+		// select의 작업이니, commit, rollback은 하지 않아도 된다.
+		
+		session.close();
+		
+		return loginUser;
+	}
+
 }

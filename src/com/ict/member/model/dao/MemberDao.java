@@ -11,4 +11,9 @@ public class MemberDao {
 		return result;
 	}
 
+	public Member selectMember(SqlSession session, Member mem) {
+		
+		return null;
+	}
+
 }
