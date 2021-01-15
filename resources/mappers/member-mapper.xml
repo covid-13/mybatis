@@ -3,10 +3,14 @@
 "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberMapper">
+	<resultMap type="Member" id="memberResultSet">
+	
+	</resultMap>
 	
 	<!-- 
 		id: 외부(Dao)에서 참조하기 위한 쿼리문의 고유 아이디
 		parameterType : 내부로 받을 객체(mybatis-config.xml에 설정된 alias로 이용가능)
+		type: ResultSet을 담을 VO클래스명으로 어떤 타입을 참조할 것인지 기술(alias 이용가능)
 		
 		쿼리문 기본적으로 preparedStatement 이다.
 		?(위치홀더) 대신 직접 parameter로 전달받은 객체의 값을 꺼내어쓴다. #{필드명}으로 값을 꺼낸다.
@@ -15,6 +19,19 @@
 		여러줄로 줄바꿈 문자를 섞어서 사용가능하다.
 		단, 문장 마침을 나타내는 세미콜론은 에러를 유발하니 쓰지말자.
 	 -->
+	<!-- <select id="loginMember" parameterType="Member" resultType="Member">
+		SELECT
+		       *
+		  FROM MEMBER
+		 WHERE USER_ID = #{ userId }
+		   AND USER_PWD= #{ userPwd }
+	</select>  -->
+	<select id="loginMember" parameterType="Member" resultMap="memberResultSet">
+	
+	</select>
+	
+	 
+	 
 	<!-- insert 쿼리문을 작성 -->
 	<insert id="insertMember" parameterType="Member">
 		INSERT 

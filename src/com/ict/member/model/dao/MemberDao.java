@@ -12,8 +12,8 @@ public class MemberDao {
 	}
 
 	public Member selectMember(SqlSession session, Member mem) {
-		
-		return null;
+		Member loginUser = session.selectOne("memberMapper.loginMember",mem);
+		return loginUser;
 	}
 
 }
