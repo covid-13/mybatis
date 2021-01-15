@@ -1,11 +1,14 @@
 package com.ict.member.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ict.member.model.service.MemberServiceImpl;
 import com.ict.member.model.vo.Member;
@@ -42,6 +45,17 @@ public class LoginServlet extends HttpServlet {
 		Member loginUser = new MemberServiceImpl().selectMember(mem);
 		
 		System.out.println("loginUser : " + loginUser);
+		
+		if(loginUser != null) { // 로그인에 성공
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", loginUser);
+			
+			response.sendRedirect(request.getContextPath());
+		}else {
+			request.setAttribute("msg", "로그인 실패");
+			RequestDispatcher error = request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp");
+			error.forward(request, response);
+		}
 	}
 
 	/**
