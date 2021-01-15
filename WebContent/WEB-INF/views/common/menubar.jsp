@@ -72,7 +72,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td><button>회원정보 수정</button></td>
+					<td><button onclick="location.href='${contextPath}/mUpdateForm.do';">회원정보 수정</button></td>
 					<td><button onclick="location.href='${contextPath}/logout.me';">로그아웃</button></td>
 				</tr>
 			</table>
