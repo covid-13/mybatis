@@ -48,11 +48,12 @@ public class MemberInsertServlet extends HttpServlet {
 		int result = mService.insertMember(m);
 		
 		if(result > 0) { // 회원가입 성공 시
-			request.getSession().setAttribute("loginUser", m); // 변경 예정
+			request.getSession().setAttribute("loginUser", mService.selectMember(m));
 			System.out.println(request.getContextPath());
 			response.sendRedirect(request.getContextPath());
 		}else {
-			//에러처리
+			request.setAttribute("msg", "회원가입에 실패했습니다.");
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
 		}
 	}
 
