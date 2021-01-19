@@ -54,4 +54,37 @@ public class BoardDao {
 		return list;
 	}
 
+	/**
+	 * 2_1. 게시글 상세조회 시 조회수 증가용
+	 * @param session
+	 * @param bId
+	 * @return
+	 */
+	public int updateCount(SqlSession session, int bId) {
+		int result = session.update("boardMapper.updateBoardCount",bId);
+		return result;
+	}
+
+	/**
+	 * 2_2. 게시글 상세조회용
+	 * @param session
+	 * @param bId
+	 * @return
+	 */
+	public Board selectBoardDetail(SqlSession session, int bId) {
+		// bId에 해당하는 게시글을 조회해 오는데, 이 때 그 해당 게시글에 달려있는 댓글들도 다 조회해보자
+		Board b = session.selectOne("boardMapper.selectBoardDetail",bId);
+		return b;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+

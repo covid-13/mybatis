@@ -132,6 +132,35 @@
 				</c:if>
 			</div>
 		</div>
+		
+		<!-- 2. 상세보기 -->
+		<script>
+			$(function(){
+				$("#listArea").find("td").mouseenter(function(){
+					$(this).parents("tr").css({"background":"orangered","cursor":"pointer"});
+				}).mouseout(function(){
+					$(this).parents("tr").css({"background":"black"});
+				}).click(function(){
+					var bId = $(this).parents().children("td").eq(0).text();
+
+					location.href = "detail.bo?bId="+ bId; // 게시판 상세보기를 할 수 있다.
+				});
+			});		
+		
+		</script>
 	</c:if>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

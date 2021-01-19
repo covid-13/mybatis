@@ -1,14 +1,14 @@
 package com.ict.board.model.service;
 
+import static com.ict.common.Template.getSqlSession;
+
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.ict.board.model.dao.BoardDao;
 import com.ict.board.model.vo.Board;
 import com.ict.board.model.vo.PageInfo;
-
-import static com.ict.common.Template.getSqlSession;
-
-import java.util.ArrayList;
 
 public class BoardServiceImpl implements BoardService {
 
@@ -35,6 +35,31 @@ public class BoardServiceImpl implements BoardService {
 		session.close();
 		
 		return list;
+	}
+
+	@Override
+	public Board selectBoardDetail(int bId) {
+		
+		SqlSession session = getSqlSession();
+		
+		// 1. 조회수 증가
+		int result = bDao.updateCount(session,bId);
+		
+		
+		// 2. 조회수 증가 성공 시 게시글 조회
+		Board b = null;
+		
+		if(result > 0) { // 조회수 증가 성공
+			session.commit();
+			
+			b = bDao.selectBoardDetail(session,bId);
+		}else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return b;
 	}
 
 }
