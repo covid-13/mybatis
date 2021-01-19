@@ -54,4 +54,25 @@ public class BoardDao {
 		return list;
 	}
 
+	/**
+	 * 2_1. 게시글 상세조회 시 조회수 증가용
+	 * @param session
+	 * @param bId
+	 * @return
+	 */
+	public int updateCount(SqlSession session, int bId) {
+		int result = session.update("boardMapper.updateBoardCount",bId);
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+

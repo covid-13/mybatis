@@ -37,6 +37,19 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+	@Override
+	public Board selectBoardDetail(int bId) {
+		
+		SqlSession session = getSqlSession();
+		
+		// 1. 조회수 증가
+		int result = bDao.updateCount(session,bId);
+		
+		
+		// 2. 조회수 증가 성공 시 게시글 조회
+		return null;
+	}
+
 }
 
 

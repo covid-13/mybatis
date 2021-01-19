@@ -19,4 +19,11 @@ public interface BoardService {
 	 * @return
 	 */
 	ArrayList<Board> selectBoardList(PageInfo pi);
+	
+	/**
+	 * 2. 게시물 상세보기용 메소드
+	 * @param bId
+	 * @return
+	 */
+	Board selectBoardDetail(int bId);
 }
