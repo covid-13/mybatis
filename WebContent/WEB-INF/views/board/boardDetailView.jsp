@@ -90,6 +90,11 @@ $(function(){
 			<tr>
 				<td colspan="2"><b>댓글(${ rCount })</b></td>
 			</tr>
+			<c:if test="${ rCount <= 0 }">
+			<tr>
+				<td align="center">등록된 댓글이 없습니다.</td>
+			</tr>
+			</c:if>
 		</table>
 		
 		<c:if test="${ rCount > 0 }">
@@ -103,6 +108,7 @@ $(function(){
 			</c:forEach>
 		</table>
 		</c:if>
+		
 	</div>
 	<div class="btnArea">
 	<button id="btnModfyList" class="btn btn-outline-secondary">수정하기</button>
