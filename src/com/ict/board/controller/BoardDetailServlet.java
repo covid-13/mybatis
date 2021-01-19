@@ -37,6 +37,11 @@ public class BoardDetailServlet extends HttpServlet {
 		BoardService bService = new BoardServiceImpl();
 		
 		Board b = bService.selectBoardDetail(bId);
+		
+		request.setAttribute("rCount", b.getReplyList().size());
+		request.setAttribute("b", b);
+		request.getRequestDispatcher("WEB-INF/views/board/boardDetailView.jsp").forward(request, response);
+		
 	}
 
 	/**

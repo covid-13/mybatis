@@ -22,6 +22,34 @@
   	<result property="bStatus" column="B_STATUS"/>
   </resultMap>
   
+  <!-- 2_3.게시글 상세보기용 resultMap -->
+  <resultMap type="Reply" id="replyResultSet">
+  	<id property="rId" column="RID"/>
+  	<result property="rContent" column="RCONTENT"/>
+  	<result property="refBid" column="REF_BID"/>
+  	<result property="rWriter" column="RWRITER"/>
+  	<result property="userName" column="R_USER_NAME"/>
+  	<result property="rCreateDate" column="R_CREATE_DATE"/>
+  	<result property="rModifyDate" column="R_MODIFY_DATE"/>
+  	<result property="rStatus" column="R_STATUS"/>
+  </resultMap>
+  
+  <resultMap type="Board" id="bdetailResultSet">
+    <id property="bId" column="BID"/>
+  	<result property="bType" column="BTYPE"/>
+  	<result property="bTitle" column="BTITLE"/>
+  	<result property="bContent" column="BCONTENT"/>
+  	<result property="bWriter" column="BWRITER"/>
+  	<result property="userName" column="B_USER_NAME"/>
+  	<result property="bCount" column="BCOUNT"/>
+  	<result property="bCreateDate" column="B_CREATE_DATE"/>
+  	<result property="bModifyDate" column="B_MODIFY_DATE"/>
+  	<result property="bStatus" column="B_STATUS"/>
+  
+    <collection property="replyList" javaType="java.util.ArrayList" resultMap="replyResultSet"/>
+  </resultMap>
+
+  
   <!-- 1_1. 게시글 수 조회용 쿼리문 -->
   <select id="selectListCount" resultType="_int">
   	SELECT
@@ -68,16 +96,16 @@
 	         , R_CREATE_DATE
 	         , R_MODIFY_DATE
 	         , R_STATUS
-	 FROM BOARD B
-	   JOIN MEMBER M 
-	      ON (B.BWRITER = M.MID)
-	    LEFT JOIN REPLY R
-	      ON (B.BID = R.REF_BID)
-	    LEFT JOIN MEMBER M2 
-	      ON (R.RWRITER = M2.MID)
-	WHERE B.BID = #{ bId }
-	    AND B_STATUS = 'Y'
-	ORDER BY RID DESC
+	      FROM BOARD B
+	      JOIN MEMBER M 
+	        ON (B.BWRITER = M.MID)
+	      LEFT JOIN REPLY R
+	        ON (B.BID = R.REF_BID)
+	      LEFT JOIN MEMBER M2 
+	        ON (R.RWRITER = M2.MID)
+	     WHERE B.BID = #{ bId }
+	       AND B_STATUS = 'Y'
+	     ORDER BY RID DESC
  </select>
 </mapper>
 
