@@ -1,11 +1,15 @@
 package com.ict.board.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ict.board.model.service.BoardService;
+import com.ict.board.model.service.BoardServiceImpl;
 
 /**
  * Servlet implementation class BoardListServlet
@@ -26,8 +30,16 @@ public class BoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		BoardService bService = new BoardServiceImpl();
+	
+		int currentPage = 1; 
+		
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		
+		int listCount = bService.getListCount();
+		System.out.println("listCount : " + listCount);
 	}
 
 	/**
