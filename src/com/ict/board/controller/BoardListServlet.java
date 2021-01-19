@@ -40,6 +40,9 @@ public class BoardListServlet extends HttpServlet {
 		
 		int listCount = bService.getListCount();
 		System.out.println("listCount : " + listCount);
+		
+		// Pagination의 getPageInfo메소드로 currentPage, listCount 전달 --> PageInfo 객체 리턴
+		
 	}
 
 	/**
