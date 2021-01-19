@@ -52,6 +52,11 @@ public class BoardListServlet extends HttpServlet {
 		
 		ArrayList<Board> list = bService.selectBoardList(pi);
 		
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("WEB-INF/views/board/boardListView.jsp").forward(request, response);
+		
 	}
 
 	/**

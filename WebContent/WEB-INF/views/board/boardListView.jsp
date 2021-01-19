@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,6 +81,56 @@
 				</tr>
 				</c:forEach>
 			</table>
+			
+			<!-- 페이징 부분 -->
+			<div id="pagingArea" align="center">
+				<!-- [이전] -->
+				<c:if test="${ pi.currentPage <= 1 }">
+					[이전] &nbsp;
+				</c:if>
+				
+				<c:if test="${ pi.currentPage > 1 }">
+					<c:url var="blistBack" value="list.bo">
+						<c:param name="currentPage" value="${ pi.currentPage - 1 }"/>
+					</c:url>
+					<a href="${ blistBack }">[이전]</a>
+				</c:if>
+				
+				<!-- [번호들] -->
+				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					<c:if test="${ p eq pi.currentPage }">
+						<font color="red" size="4"><b>[${ p }]</b></font>
+					</c:if>
+					
+					<c:if test="${ p ne pi.currentPage }">
+						<c:if test="${ !empty sc }">
+							<c:url var="blistPage" value="search.bo">
+								<c:param name="currentPage" value="${ p }"/>
+								<c:param name="condition" value="${ condition }"/>
+								<c:param name="search" value="${ search }"/>
+							</c:url>
+						</c:if>
+						<c:if test="${ empty sc }">
+							<c:url var="blistPage" value="list.bo">
+								<c:param name="currentPage" value="${ p }"/>
+							</c:url>
+						</c:if>
+						<a href="${ blistPage }"> ${ p } </a>
+					</c:if>
+				</c:forEach>
+				
+				<!-- [다음] -->
+				<c:if test="${ pi.currentPage >= pi.maxPage }">
+					&nbsp;[다음]
+				</c:if>
+				
+				<c:if test="${ pi.currentPage < pi.maxPage }">
+					<c:url var="blistNext" value="list.bo">
+						<c:param name="currentPage" value="${ pi.currentPage + 1 }"/>
+					</c:url>
+					<a href="${ blistNext }">[다음]</a>
+				</c:if>
+			</div>
 		</div>
 	</c:if>
 </body>
