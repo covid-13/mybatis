@@ -59,9 +59,10 @@
 	 	
 	 </environments>
 	 
-	 <!-- DB에 사용되는 쿼미문들을 담은 mapper 파일들을 등록하는 부분 -->
+	 <!-- DB에 사용되는 쿼리문들을 담은 mapper 파일들을 등록하는 부분 -->
 	 <mappers>
 	 	<mapper resource="/mappers/member-mapper.xml"/>
+	 	<mapper resource="/mappers/board-mapper.xml"/>
 	 </mappers>
 </configuration>
 
