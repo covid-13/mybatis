@@ -1,6 +1,7 @@
 package com.ict.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ict.board.model.service.BoardService;
 import com.ict.board.model.service.BoardServiceImpl;
+import com.ict.board.model.vo.Board;
+import com.ict.board.model.vo.PageInfo;
+import com.ict.common.Pagination;
 
 /**
  * Servlet implementation class BoardListServlet
@@ -42,6 +46,11 @@ public class BoardListServlet extends HttpServlet {
 		System.out.println("listCount : " + listCount);
 		
 		// Pagination의 getPageInfo메소드로 currentPage, listCount 전달 --> PageInfo 객체 리턴
+		
+		// static이 붙은 메소드는 클래스명.메소드명으로 호출한다.
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);  
+		
+		ArrayList<Board> list = bService.selectBoardList(pi);
 		
 	}
 

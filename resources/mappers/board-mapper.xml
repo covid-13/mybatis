@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="boardMapper">
-  
+  <!-- 1_3. resultMap 추가 -->
+  <!--      게시글 목록들 조회용 resultMap -->
+  <resultMap type="Board" id="blistResultSet">
+    <!-- property의 값은 Board의 필드명과 동일하게 써줘야한다.
+         column의 값은 데이터베이스의 컬럼명과 동일하게 써줘야한다.
+         
+         <id>는 테이블에서의 기본키값(PK값)을 나타낸다.
+         <result>는 테이블에서의 일반컬럼을 나타낸다.
+     -->
+  	<id property="bId" column="BID"/>
+  	<result property="bType" column="BTYPE"/>
+  	<result property="bTitle" column="BTITLE"/>
+  	<result property="bContent" column="BCONTENT"/>
+  	<result property="bWriter" column="BWRITER"/>
+  	<result property="userName" column="USER_NAME"/>
+  	<result property="bCount" column="BCOUNT"/>
+  	<result property="bCreateDate" column="B_CREATE_DATE"/>
+  	<result property="bModifyDate" column="B_MODIFY_DATE"/>
+  	<result property="bStatus" column="B_STATUS"/>
+  </resultMap>
   
   <!-- 1_1. 게시글 수 조회용 쿼리문 -->
   <select id="selectListCount" resultType="_int">
@@ -9,5 +28,16 @@
   	       COUNT(*)
   	  FROM BOARD
   	 WHERE B_STATUS='Y'
+  </select>
+  
+  <!-- 1_2. 게시글 목록 조회용 쿼리문 -->
+  <select id="selectBoardList" resultMap="blistResultSet">
+  	SELECT
+  	       *
+  	  FROM BOARD B
+  	  JOIN MEMBER M 
+  	    ON (B.BWRITER = M.MID)
+  	 WHERE B_STATUS = 'Y'
+  	 ORDER BY BID DESC
   </select>
 </mapper>
