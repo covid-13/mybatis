@@ -76,6 +76,18 @@ public class BoardServiceImpl implements BoardService {
 		return listCount;
 	}
 
+	@Override
+	public ArrayList<Board> selectSearchResultList(SearchCondition sc, PageInfo pi) {
+		
+		SqlSession session = getSqlSession();
+		
+		ArrayList<Board> list = bDao.selectSearchResultList(session,sc,pi);
+		
+		session.close();
+		
+		return list;
+	}
+
 }
 
 

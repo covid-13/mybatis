@@ -40,16 +40,17 @@ $(function(){
 	$("#btnListView").on("click",function(){
 		location.href="list.bo";
 	});
-	$("#btnModfyList").on("click",function(){
-		location.href="bUpdateView.bo";
-	});
 	
+	$("#btnModfyList").on("click",function(){
+		$("#frm").attr("action","mUpdate.bo");
+	});
 });
 </script>
 </head>
 <body>
-<jsp:include page="../common/menubar.jsp"/>
+	<jsp:include page="../common/menubar.jsp"/>
 	
+	<form id="frm" method="post">
 	<div class="outer">
 		<br>
 		
@@ -61,7 +62,7 @@ $(function(){
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><b>${ b.bTitle }</b></td>
+				<td><input type="text" name="title" vlaue="${ b.bTitle }"></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
@@ -77,7 +78,7 @@ $(function(){
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><p style="height:100px;"><b>${ b.bContent }</b></p></td>
+				<td><p style="height:100px;"><input type="text" name="content" vlaue="${ b.bContent }"></p></td>
 			</tr>
 		</table>
 		
@@ -115,9 +116,10 @@ $(function(){
 		
 	</div>
 	<div class="btnArea">
-	<button id="btnModfyList" class="btn btn-outline-secondary">수정하기</button>
-	<button id="btnDeleteList" class="btn btn-outline-secondary">삭제하기</button>
-	<button id="btnListView" class="btn btn-outline-secondary">목록보기</button>
+		<button id="btnModfyList" class="btn btn-outline-secondary">수정하기</button>
+		<button id="btnDeleteList" class="btn btn-outline-secondary">삭제하기</button>
+		<button id="btnListView" class="btn btn-outline-secondary">목록보기</button>
 	</div>
+	</form>
 </body>
 </html>

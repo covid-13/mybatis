@@ -85,6 +85,26 @@ public class BoardDao {
 		return listCount;
 	}
 
+	/**
+	 * 3_2. 검색된 게시글 목록 조회용
+	 * @param session 연결객체정보
+	 * @param sc  검색어
+	 * @param pi  페이지정보
+	 * @return
+	 */
+	public ArrayList<Board> selectSearchResultList(SqlSession session, SearchCondition sc, PageInfo pi) {
+		
+		ArrayList<Board> list = null;
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		list = (ArrayList)session.selectList("boardMapper.selectSearchResultList",sc,rowBounds);
+		
+		return list;
+	}
+
 }
 
 
