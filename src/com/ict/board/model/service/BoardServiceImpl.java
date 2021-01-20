@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.ict.board.model.dao.BoardDao;
 import com.ict.board.model.vo.Board;
 import com.ict.board.model.vo.PageInfo;
+import com.ict.board.model.vo.SearchCondition;
 
 public class BoardServiceImpl implements BoardService {
 
@@ -60,6 +61,19 @@ public class BoardServiceImpl implements BoardService {
 		session.close();
 		
 		return b;
+	}
+
+	
+	@Override
+	public int getSearchResultListCount(SearchCondition sc) {
+		
+		SqlSession session = getSqlSession();
+		
+		int listCount = bDao.getSearchResultListCount(session,sc);
+		
+		session.close();
+		
+		return listCount;
 	}
 
 }
