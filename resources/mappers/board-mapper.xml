@@ -126,7 +126,37 @@
     </if>
  </select>
  
- 
+ <select id="selectSearchResultList" resultMap="blistResultSet">
+    <!--  
+    	만약에 쿼리문을 평소대로 그냥 작성한다면 안에 <, >라는 기호가 포함된다면 연산자로 인식하지 않고 태그로 인식해버린다.
+    	=> 이걸 해결해주기위해서 쿼리문을 CDATA주석으로 감싸야되는 경우도 있다.
+    	
+    	<![CDATA[......]]>로 쿼리문을 감싸서 사용한다. 동적SQL을 사용해야되는 경우 <> 이런 부분을 사용할때 감싸준다.
+    -->
+ 	SELECT
+ 	       *
+ 	  FROM BOARD B
+ 	  JOIN MEMBER M 
+ 	    ON (B.BWRITER = M.MID)
+ 	 WHERE B_STATUS = 'Y'
+ 	 <!-- 2. choose, when, otherwise로 하는 방법 -->
+ 	 <choose>
+ 	 	<when test="writer != null">
+   		<![CDATA[
+ 	 		AND USER_NAME LIKE '%' || #{writer} ||'%'
+ 		 ]]>
+ 	 	</when>
+ 	 	<when test="title != null">
+ 	 		AND BTITLE LIKE '%' || #{ title } || '%'
+ 	 	</when>
+ 	 	<otherwise>
+ 	 		AND BCONTENT LIKE '%'|| #{ content } || '%'
+ 	 	</otherwise>
+ 	 	
+ 	 </choose>
+ 	 ORDER BY BID DESC
+ 	 
+ </select>
  
 </mapper>
 

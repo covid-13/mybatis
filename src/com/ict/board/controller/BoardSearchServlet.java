@@ -1,6 +1,8 @@
 package com.ict.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ict.board.model.service.BoardService;
 import com.ict.board.model.service.BoardServiceImpl;
+import com.ict.board.model.vo.Board;
+import com.ict.board.model.vo.PageInfo;
 import com.ict.board.model.vo.SearchCondition;
+import com.ict.common.Pagination;
 
 /**
  * Servlet implementation class BoardSearchServlet
@@ -60,6 +65,21 @@ public class BoardSearchServlet extends HttpServlet {
 		int listCount = bService.getSearchResultListCount(sc);
 		
 		System.out.println("listCount : " + listCount);
+		
+		// 페이지 정보가 담겨있는 PageInfo를 받기 위해서 Pagination static 함수 호출
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		// 검색 결과에 해당되는 게시물 목록을 조회
+		ArrayList<Board> list = bService.selectSearchResultList(sc,pi);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
+		
+		request.setAttribute("sc", sc);
+		request.setAttribute("condition", condition);
+		request.setAttribute("search", search);
+		
+		request.getRequestDispatcher("WEB-INF/views/board/boardListView.jsp").forward(request, response);
 	}
 
 	/**

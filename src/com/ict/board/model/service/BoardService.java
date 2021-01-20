@@ -34,6 +34,14 @@ public interface BoardService {
 	 * @return
 	 */
 	int getSearchResultListCount(SearchCondition sc);
+
+	/**
+	 * 3_2. 검색된 게시판 목록들 조회용 메소드
+	 * @param sc
+	 * @param pi
+	 * @return
+	 */
+	ArrayList<Board> selectSearchResultList(SearchCondition sc, PageInfo pi);
 }
 
 
