@@ -88,6 +88,23 @@ public class BoardServiceImpl implements BoardService {
 		return list;
 	}
 
+	@Override
+	public int updateBoardDetail(Board b) {
+		SqlSession session = getSqlSession();
+		
+		int result = bDao.updateBoardDetail(session,b);
+		
+		if(result > 0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		
+		session.close();
+
+		return result;
+	}
+
 }
 
 

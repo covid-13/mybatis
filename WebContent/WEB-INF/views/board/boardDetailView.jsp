@@ -40,8 +40,10 @@ $(function(){
 	$("#btnListView").on("click",function(){
 		location.href="list.bo";
 	});
+	
+	var bId = <%= request.getParameter("bId") %>;
 	$("#btnModfyList").on("click",function(){
-		location.href="bUpdateView.bo";
+		location.href="bUpdateView.bo?bId="+ bId;
 	});
 	
 });

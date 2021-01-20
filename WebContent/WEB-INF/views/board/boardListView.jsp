@@ -26,6 +26,18 @@
 		text-decoration:none;
 	}
 </style>
+<script>
+	$(function(){
+		$("#btnSearchBoard").on("click",function(){
+			$("#frm").attr("action","search.bo");
+		});
+		
+		$("#btnInsertBoard").on("click",function(){
+			$("#frm").attr("action","bInsertView.bo");
+		});
+	});
+
+</script>
 </head>
 <body>
 <jsp:include page="../common/menubar.jsp"/>
@@ -44,7 +56,7 @@
 			
 			<!-- 3. 게시물 검색하기 -->
 			<div id="searchArea" align="center">
-				<form action="${contextPath }/search.bo">
+				<form id="frm">
 					<select id="searchCondition" name="condition">
 						<option>-------</option>
 						<option value="writer">작성자</option>
@@ -53,10 +65,10 @@
 					</select>
 					
 					<input type="search" name="search">
-					<button>검색하기</button>
+					<input type="submit" id="btnSearchBoard" value="검색하기">
+					<input type="submit" id="btnInsertBoard" value="등록하기">
 				</form>
 			</div>
-			
 			<br>
 			<br>
 			

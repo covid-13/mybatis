@@ -41,8 +41,9 @@ $(function(){
 		location.href="list.bo";
 	});
 	
+	var bId = <%= request.getParameter("bId")%>
 	$("#btnModfyList").on("click",function(){
-		$("#frm").attr("action","mUpdate.bo");
+		$("#frm").attr("action","bUpdate.bo?bId="+bId);
 	});
 });
 </script>
