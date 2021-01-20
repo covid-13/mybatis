@@ -105,8 +105,25 @@ public class BoardDao {
 		return list;
 	}
 
+	/**
+	 * 4. 게시글 수정용 
+	 * @param session
+	 * @param b
+	 * @return
+	 */
 	public int updateBoardDetail(SqlSession session, Board b) {
 		int result = session.update("boardMapper.updateBoardResult",b);
+		return result;
+	}
+
+	/**
+	 * 5. 게시글 등록용
+	 * @param session
+	 * @param b
+	 * @return
+	 */
+	public int insertBoard(SqlSession session, Board b) {
+		int result = session.insert("boardMapper.insertBoardResult",b);
 		return result;
 	}
 
