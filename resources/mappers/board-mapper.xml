@@ -158,6 +158,19 @@
  	 
  </select>
  
+ <update id="updateBoardResult">
+ 	UPDATE 
+ 	       BOARD
+ 	  <set>
+ 	  	<if test="bTitle != null">
+ 	  		BTITLE = #{ bTitle },
+ 	  	</if> 
+ 	  	<if test="bContent != null">
+ 	  		BCONTENT = #{ bContent },
+ 	  	</if>
+ 	  </set>
+     WHERE bId = #{ bId }
+ </update>
 </mapper>
 
 

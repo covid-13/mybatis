@@ -41,8 +41,9 @@ $(function(){
 		location.href="list.bo";
 	});
 	
+	var bId = <%= request.getParameter("bId")%>
 	$("#btnModfyList").on("click",function(){
-		$("#frm").attr("action","mUpdate.bo");
+		$("#frm").attr("action","bUpdate.bo?bId="+bId);
 	});
 });
 </script>
@@ -62,7 +63,7 @@ $(function(){
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="title" vlaue="${ b.bTitle }"></td>
+				<td><input type="text" name="title" value="${ b.bTitle }"></td>
 			</tr>
 			<tr>
 				<td>작성자</td>
@@ -78,7 +79,7 @@ $(function(){
 			</tr>
 			<tr>
 				<td>내용</td>
-				<td><p style="height:100px;"><input type="text" name="content" vlaue="${ b.bContent }"></p></td>
+				<td><textarea style="width:540px; height:100px;" name="content">${ b.bContent }</textarea></td>
 			</tr>
 		</table>
 		

@@ -42,6 +42,13 @@ public interface BoardService {
 	 * @return
 	 */
 	ArrayList<Board> selectSearchResultList(SearchCondition sc, PageInfo pi);
+
+	/**
+	 * 4. 게시글 수정하기용 메소드
+	 * @param b 수정정보(제목, 내용)
+	 * @return
+	 */
+	int updateBoardDetail(Board b);
 }
 
 

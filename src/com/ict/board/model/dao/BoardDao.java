@@ -105,6 +105,11 @@ public class BoardDao {
 		return list;
 	}
 
+	public int updateBoardDetail(SqlSession session, Board b) {
+		int result = session.update("boardMapper.updateBoardResult",b);
+		return result;
+	}
+
 }
 
 
