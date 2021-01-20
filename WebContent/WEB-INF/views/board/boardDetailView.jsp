@@ -46,6 +46,9 @@ $(function(){
 		location.href="bUpdateView.bo?bId="+ bId;
 	});
 	
+	$("#btnDeleteList").on("click",function(){
+		location.href="bDelete.bo?bId="+ bId;
+	});
 });
 </script>
 </head>
@@ -117,8 +120,10 @@ $(function(){
 		
 	</div>
 	<div class="btnArea">
-	<button id="btnModfyList" class="btn btn-outline-secondary">수정하기</button>
-	<button id="btnDeleteList" class="btn btn-outline-secondary">삭제하기</button>
+	<c:if test="${ b.userName eq loginUser.userName }">
+		<button id="btnModfyList" class="btn btn-outline-secondary">수정하기</button>
+		<button id="btnDeleteList" class="btn btn-outline-secondary">삭제하기</button>
+	</c:if>
 	<button id="btnListView" class="btn btn-outline-secondary">목록보기</button>
 	</div>
 </body>

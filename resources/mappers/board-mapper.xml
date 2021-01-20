@@ -171,6 +171,30 @@
  	  </set>
      WHERE bId = #{ bId }
  </update>
+ 
+ <insert id="insertBoardResult">
+ 	INSERT 
+ 	  INTO BOARD
+ 	VALUES (
+ 	         SEQ_BID.NEXTVAL
+ 		   , 1
+ 		   , #{ bTitle }
+ 		   , #{ bContent }
+ 		   , #{ bWriter }
+ 		   , DEFAULT
+ 		   , SYSDATE
+ 		   , SYSDATE
+ 		   , DEFAULT
+ 	       )
+ </insert>
+ 
+ <update id="updateBoard">
+ 	UPDATE 
+ 		   BOARD
+ 	   SET
+ 	       B_STATUS= 'N'
+ 	 WHERE BID = #{ bId }
+ </update>
 </mapper>
 
 

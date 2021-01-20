@@ -38,7 +38,7 @@
 <script>
 $(function(){
 	$("#btnListView").on("click",function(){
-		location.href="list.bo";
+		$("#frm").attr("action","list.bo");
 	});
 	
 	var bId = <%= request.getParameter("bId")%>

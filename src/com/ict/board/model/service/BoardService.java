@@ -49,6 +49,20 @@ public interface BoardService {
 	 * @return
 	 */
 	int updateBoardDetail(Board b);
+
+	/**
+	 * 5. 게시글 등록용 메소드 
+	 * @param b
+	 * @return
+	 */
+	int insertBoard(Board b);
+
+	/**
+	 * 6. 게시글 삭제용 메소드
+	 * @param bId
+	 * @return
+	 */
+	int deleteBoard(int bId);
 }
 
 
