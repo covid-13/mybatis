@@ -122,6 +122,24 @@ public class BoardServiceImpl implements BoardService {
 		return result;
 	}
 
+	@Override
+	public int deleteBoard(int bId) {
+		
+		SqlSession session = getSqlSession();
+		
+		int result = bDao.deleteBoard(session,bId);
+		
+		if(result > 0) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		
+		session.close();
+		
+		return result;
+	}
+
 }
 
 
