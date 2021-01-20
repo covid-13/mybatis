@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.ict.board.model.vo.Board;
 import com.ict.board.model.vo.PageInfo;
+import com.ict.board.model.vo.SearchCondition;
 
 public interface BoardService {
 
@@ -26,4 +27,21 @@ public interface BoardService {
 	 * @return
 	 */
 	Board selectBoardDetail(int bId);
+
+	/**
+	 * 3_1. 검색된 게시판 목록 수 조회용 메소드
+	 * @param sc 검색어
+	 * @return
+	 */
+	int getSearchResultListCount(SearchCondition sc);
 }
+
+
+
+
+
+
+
+
+
+

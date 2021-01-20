@@ -107,6 +107,27 @@
 	       AND B_STATUS = 'Y'
 	     ORDER BY RID DESC
  </select>
+ <select id="selectSearchResultCount" resultType="_int">
+ 	SELECT
+ 	       COUNT(*)
+ 	  FROM BOARD B
+ 	  JOIN MEMBER M 
+ 	    ON (B.BWRITER = M.MID)
+ 	 WHERE B_STATUS='Y'
+    <!-- 1. if문으로 하는 방법 -->
+    <if test="writer != null">
+       AND USER_NAME LIKE '%'|| #{ writer } ||'%'
+    </if>
+ 	<if test="title != null">
+ 	   AND BTITLE LIKE '%'|| #{ title } || '%'
+ 	</if>
+    <if test="content != null">
+       AND BCONTENT LIKE '%' || #{ content } || '%'
+    </if>
+ </select>
+ 
+ 
+ 
 </mapper>
 
 

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.ict.board.model.vo.Board;
 import com.ict.board.model.vo.PageInfo;
+import com.ict.board.model.vo.SearchCondition;
 
 public class BoardDao {
 
@@ -75,6 +76,13 @@ public class BoardDao {
 		// bId에 해당하는 게시글을 조회해 오는데, 이 때 그 해당 게시글에 달려있는 댓글들도 다 조회해보자
 		Board b = session.selectOne("boardMapper.selectBoardDetail",bId);
 		return b;
+	}
+
+	public int getSearchResultListCount(SqlSession session, SearchCondition sc) {
+		
+		int listCount = session.selectOne("boardMapper.selectSearchResultCount",sc);
+		
+		return listCount;
 	}
 
 }
