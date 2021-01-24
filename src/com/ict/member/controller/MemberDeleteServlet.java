@@ -41,7 +41,7 @@ public class MemberDeleteServlet extends HttpServlet {
 		int result = mService.deleteMember(loginUser);
 		
 		if(result > 0) {
-			session.invalidate();
+			session.invalidate(); //세션에서 완전히 삭제하는 메소드 invalidate()
 			response.sendRedirect(request.getContextPath());
 		}else {
 			request.setAttribute("msg", "회원탈퇴에 실패하였습니다.");

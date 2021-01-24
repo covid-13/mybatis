@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,7 +65,7 @@
 	<!-- jsp/servlet에서 request.getContextPath()를 작성하게되면 ContextPath(프로젝트명)을 가져올 수 있다. -->
 	
 	<!-- ContextPath명을 매번 쓰기 귀찮으니 c:set을 이용해서 application객체에 ContextPath경로를 contextPath라는 변수에 담아서 사용하자 -->
-	<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application" />
+	<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"/>
 	<%-- <a href="${ contextPath }/WEB-INF/views/main/main.jsp">메인으로</a> --%>
 	 
 	<!-- 
